@@ -1,5 +1,5 @@
 package model;
-// Generated 9/05/2016 05:31:10 PM by Hibernate Tools 4.3.1
+// Generated 9/12/2015 08:53:02 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="actividad"
-    ,catalog="hdsoft_bd"
+    ,catalog="ppiv"
 )
 public class Actividad  implements java.io.Serializable {
 
@@ -134,6 +134,11 @@ public class Actividad  implements java.io.Serializable {
     
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
+    }
+
+    @Override
+    public String toString() {
+        return descripcion;
     }
 
 

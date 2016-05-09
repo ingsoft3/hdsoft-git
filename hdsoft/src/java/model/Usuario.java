@@ -1,5 +1,5 @@
 package model;
-// Generated 9/05/2016 05:31:10 PM by Hibernate Tools 4.3.1
+// Generated 24/11/2015 08:20:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="usuario"
-    ,catalog="hdsoft_bd"
+    ,catalog="ppiv"
 )
 public class Usuario  implements java.io.Serializable {
 
@@ -163,12 +163,21 @@ public class Usuario  implements java.io.Serializable {
     public void setExtension(int extension) {
         this.extension = extension;
     }
-
     
     @Column(name="estado", nullable=false)
     public int getEstado() {
         return this.estado;
     }
+    
+    @Column(name="estadoString", nullable=false)
+    public String getEstadoString() {
+        if (this.estado == 1) {
+            return "ACTIVO";
+        }
+        return "INACTIVO";
+    }
+    
+  
     
     public void setEstado(int estado) {
         this.estado = estado;
@@ -211,9 +220,10 @@ public class Usuario  implements java.io.Serializable {
         this.actividads = actividads;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }
 
 

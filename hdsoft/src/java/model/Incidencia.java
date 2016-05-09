@@ -1,7 +1,9 @@
 package model;
-// Generated 9/05/2016 05:31:10 PM by Hibernate Tools 4.3.1
+// Generated 9/12/2015 08:53:02 PM by Hibernate Tools 4.3.1
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +25,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="incidencia"
-    ,catalog="hdsoft_bd"
+    ,catalog="ppiv"
 )
 public class Incidencia  implements java.io.Serializable {
 
@@ -134,6 +136,15 @@ public class Incidencia  implements java.io.Serializable {
     public void setEstado(int estado) {
         this.estado = estado;
     }
+    @Column(name="fecha", nullable=false, length=250)
+    public String getFecha() {
+        Date now=new Date();
+        SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");        
+        String fec = sm.format(now);
+        return fec;
+    }
+    
+    
 
     @Temporal(TemporalType.DATE)
     @Column(name="fecha_inicio", nullable=false, length=10)
@@ -162,6 +173,11 @@ public class Incidencia  implements java.io.Serializable {
     
     public void setActividads(Set actividads) {
         this.actividads = actividads;
+    }
+
+    @Override
+    public String toString() {
+        return nombre;
     }
 
 
