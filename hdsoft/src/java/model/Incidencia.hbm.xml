@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/05/2016 05:31:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Incidencia" table="incidencia" catalog="hdsoft_bd" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="activos" class="model.Activos" fetch="select">
+            <column name="activo" />
+        </many-to-one>
+        <many-to-one name="usuario" class="model.Usuario" fetch="select">
+            <column name="usuario" not-null="true" />
+        </many-to-one>
+        <property name="tipo" type="int">
+            <column name="tipo" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="250" not-null="true" />
+        </property>
+        <property name="prioridad" type="int">
+            <column name="prioridad" not-null="true" />
+        </property>
+        <property name="estado" type="int">
+            <column name="estado" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="10" not-null="true" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="10" />
+        </property>
+        <set name="actividads" table="actividad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="incidencia" not-null="true" />
+            </key>
+            <one-to-many class="model.Actividad" />
+        </set>
+    </class>
+</hibernate-mapping>

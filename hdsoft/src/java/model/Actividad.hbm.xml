@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/05/2016 05:31:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Actividad" table="actividad" catalog="hdsoft_bd" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="incidencia" class="model.Incidencia" fetch="select">
+            <column name="incidencia" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="model.Usuario" fetch="select">
+            <column name="tecnico" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="500" not-null="true" />
+        </property>
+        <property name="fechaInicio" type="date">
+            <column name="fecha_inicio" length="10" />
+        </property>
+        <property name="fechaFin" type="date">
+            <column name="fecha_fin" length="10" />
+        </property>
+        <property name="estado" type="int">
+            <column name="estado" not-null="true" />
+        </property>
+        <property name="respuesta" type="string">
+            <column name="respuesta" length="500" />
+        </property>
+    </class>
+</hibernate-mapping>

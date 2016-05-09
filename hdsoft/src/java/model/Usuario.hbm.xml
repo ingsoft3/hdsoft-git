@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/05/2016 05:31:12 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Usuario" table="usuario" catalog="hdsoft_bd" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="area" class="model.Area" fetch="select">
+            <column name="area" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipousuario" class="model.Tipousuario" fetch="select">
+            <column name="tipo" not-null="true" />
+        </many-to-one>
+        <property name="nombreUsuario" type="string">
+            <column name="nombre_usuario" length="15" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="30" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="60" not-null="true" />
+        </property>
+        <property name="telefono" type="int">
+            <column name="telefono" not-null="true" />
+        </property>
+        <property name="extension" type="int">
+            <column name="extension" not-null="true" />
+        </property>
+        <property name="estado" type="int">
+            <column name="estado" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="500" not-null="true" />
+        </property>
+        <set name="incidencias" table="incidencia" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" not-null="true" />
+            </key>
+            <one-to-many class="model.Incidencia" />
+        </set>
+        <set name="activoses" table="activos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" not-null="true" />
+            </key>
+            <one-to-many class="model.Activos" />
+        </set>
+        <set name="actividads" table="actividad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tecnico" not-null="true" />
+            </key>
+            <one-to-many class="model.Actividad" />
+        </set>
+    </class>
+</hibernate-mapping>
