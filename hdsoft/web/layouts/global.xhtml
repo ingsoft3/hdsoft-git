@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>HD-SOFT ADMINISTRADOR</title>
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <h:form>
+                
+                <div id="divSesionUsuario" >
+                    <span>
+                        <b>Sesión iniciada por:  </b> 
+                        <p:outputLabel value="#{mbSLogin.usuario.nombre} "/>
+                        <p:outputLabel value="#{mbSLogin.usuario.apellido} "/>
+                    </span>                    
+                    <p:commandButton value="Salir" action="#{mbSLogin.cerrarSesion}"/>
+                </div>
+                <p:growl id="messages"/>
+                    <p:menubar>   
+                        <p:submenu label="Inicio"  >
+                           <p:menuitem value="Home" url="/faces/layouts/global.xhtml" /> 
+                           <p:menuitem value="Salir" action="#{mbSLogin.cerrarSesion}" />
+                        </p:submenu>
+ 
+                        <p:submenu label="Usuario" >
+                           <p:menuitem value="Crear" url="/faces/usuario/crear.xhtml" />                          
+                           <p:menuitem value="Consultar" url="/faces/usuario/buscar.xhtml"/>                            
+                           <p:menuitem value="Cambiar contraseña" url="/faces/usuario/cambiarPass.xhtml"/>                           
+                        </p:submenu> 
+                        
+                        <p:submenu label="Area" >
+                           <p:menuitem value="Crear" url="/faces/area/crear.xhtml" />                          
+                           <p:menuitem value="Consultar" url="/faces/area/buscar.xhtml"/>                            
+                        </p:submenu> 
+                        
+                        <p:submenu label="Tipo usuario" >
+                           <p:menuitem value="Crear" url="/faces/tipousuario/crear.xhtml" />                          
+                           <p:menuitem value="Consultar" url="/faces/tipousuario/buscar.xhtml"/>                            
+                        </p:submenu>
+                        
+                        <p:submenu label="Tipo activo" >
+                           <p:menuitem value="Crear" url="/faces/tipoactivo/crear.xhtml" />                          
+                           <p:menuitem value="Consultar" url="/faces/tipoactivo/buscar.xhtml"/>                            
+                        </p:submenu>
+                        
+                        <p:submenu label="Activos" >
+                           <p:menuitem value="Crear" url="/faces/activos/crear.xhtml" />                          
+                           <p:menuitem value="Consultar" url="/faces/activos/buscar.xhtml"/>                            
+                        </p:submenu>
+                        
+                        <p:submenu label="Incidencias" >
+                           <p:menuitem value="Crear" url="/faces/incidencias/crear.xhtml" />                          
+                           <p:menuitem value="Consultar" url="/faces/incidencias/buscar.xhtml"/>                            
+                        </p:submenu>
+                        
+                        <p:submenu label="Actividades" >
+                           <p:menuitem value="Crear" url="/faces/actividad/crear.xhtml" />                          
+                           <p:menuitem value="Consultar" url="/faces/actividad/buscar.xhtml"/> 
+                           <p:menuitem value="Pendientes por cerrar" url="/faces/actividad/cerrar.xhtml"/> 
+                        </p:submenu>
+                    </p:menubar>
+            </h:form>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content"> </ui:insert>
+        </div>
+
+        <div id="bottom" align="center">
+            <ui:insert name="bottom">&copy; 2016 Ingeniería de Software III</ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
