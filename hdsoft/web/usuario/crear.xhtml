@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../layouts/global.xhtml">
+
+            <ui:define name="content">
+                <h2>Crear Usuario</h2>
+                <hr />
+                <h:form id="formcrear">
+                    <h:panelGrid columns="3">
+                        
+                        <p:growl id="growl" showDetail="true" />
+                        
+                        <p:outputLabel for="idNombreUsuario" value="Usuario" />
+                        <p:inputText id="idNombreUsuario" label="Usuario " required="true" value="#{usuarioBean.usuario.nombreUsuario}" />
+                        <p:message for="idNombreUsuario" /> 
+                        
+                        <p:outputLabel for="idNombre" value="Nombre" />
+                        <p:inputText id="idNombre" label="Nombre" required="true" value="#{usuarioBean.usuario.nombre}" />
+                        <p:message for="idNombre" /> 
+                        
+                        <p:outputLabel for="idApellido" value="Apellido" />
+                        <p:inputText id="idApellido" label="Apellido" required="true" value="#{usuarioBean.usuario.apellido}" />
+                        <p:message for="idApellido" /> 
+                        
+                        <p:outputLabel for="idArea" value="Area" />
+                        <p:selectOneMenu id="idArea" value="#{usuarioBean.selArea}">
+                            <p:ajax event="change" partialSubmit="true"/>
+                            <f:selectItem itemLabel="Seleccione uno" itemValue=" " />
+                            <f:selectItems value="#{usuarioBean.LArea}"  var="posicionIt" itemLabel="#{posicionIt}" itemValue="#{posicionIt.id}" />
+                        </p:selectOneMenu>
+                        <p:message for="idArea"/>
+                        
+                        <p:outputLabel for="idEmail" value="Email" />
+                        <p:inputText id="idEmail" label="Email " required="true" value="#{usuarioBean.usuario.email}" />
+                        <p:message for="idEmail" /> 
+                        
+                        <p:outputLabel for="idTelefono" value="Telefono" />
+                        <p:inputText id="idTelefono" label="Telefono " required="true" value="#{usuarioBean.usuario.telefono}" />
+                        <p:message for="idTelefono" /> 
+                        
+                        <p:outputLabel for="idExtension" value="Extension" />
+                        <p:inputText id="idExtension" label="Extension " required="true" value="#{usuarioBean.usuario.extension}" />
+                        <p:message for="idExtension" />
+                        
+                        <p:outputLabel for="idTipousuario" value="Tipousuario" />
+                        <p:selectOneMenu id="idTipousuario" value="#{usuarioBean.selTipo}">
+                            <p:ajax event="change" partialSubmit="true"/>
+                            <f:selectItem itemLabel="Seleccione uno" itemValue=" " />
+                            <f:selectItems value="#{usuarioBean.LTipousuario}"  var="posicionIt" itemLabel="#{posicionIt}" itemValue="#{posicionIt.id}" />
+                        </p:selectOneMenu>
+                        <p:message for="idTipousuario"/>
+                        
+                        <p:outputLabel for="idEstado" value="Estado" />
+                        <p:selectOneRadio id="idEstado" label="Estado " value="#{usuarioBean.usuario.estado}">
+                            <f:selectItem itemLabel="ACTIVO" itemValue="1" /> 
+                            <f:selectItem itemLabel="INACTIVO" itemValue="0" />                    
+                        </p:selectOneRadio>
+                        <p:message for="idEstado" />
+                                                                     
+                        <p:outputLabel for="idPassword" value="Contraseña" />
+                        <p:password id="idPassword" size="50" value="#{usuarioBean.usuario.password}" />
+                        <p:message for="idPassword" />
+
+                        <p:commandButton id="btnEnviar" value="Crear" actionListener="#{usuarioBean.crear()}" update="growl formcrear">
+                        </p:commandButton>
+                        <p:message for="btnEnviar"/>
+                    </h:panelGrid>    
+                             
+                </h:form>
+               
+            </ui:define>
+            
+            <ui:define name="bottom">
+                
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>
