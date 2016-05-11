@@ -1,5 +1,5 @@
 package model;
-// Generated 9/12/2015 08:53:02 PM by Hibernate Tools 4.3.1
+
 
 
 import java.text.ParseException;
@@ -25,7 +25,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="incidencia"
-    ,catalog="ppiv"
+    ,catalog="hdsoft_bd"
 )
 public class Incidencia  implements java.io.Serializable {
 

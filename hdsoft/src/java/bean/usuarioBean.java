@@ -138,64 +138,7 @@ public class usuarioBean implements Serializable{
         }                
     }
    
-    public void eliminar(Usuario usuario) {
-        this.usuario=usuario;
-        if ("admin".equals(usuario.getNombreUsuario())){
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Información", "No se puede eliminar usuario admin del sistema");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }else{
-            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
-            usuarioDao.delete(usuario);         
-            this.usuario= new Usuario() ;        
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Información", "Eliminado éxitosamente");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            init();
-        }
-    }   
-    
-    public void onRowEdit(Usuario usuario) {        
-        this.usuario=usuario;        
-        if ("admin".equals(usuario.getNombreUsuario())){
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Información", "No se puede Editar admin");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }else{
-            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
-            /*if (this.usuario.getEstadoString().equals("ACTIVO")){
-                usuario.setEstado(1);
-            }else{
-                usuario.setEstado(0); 
-            }*/
-            usuario.setTipousuario(tipousuarioDao.findById(selTipo));
-            usuario.setArea(areaDao.findById(selArea));
-            usuario.setPassword(this.usuario.getPassword());
-            usuarioDao.update(usuario);         
-            this.usuario = new Usuario() ;        
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Información", "Editado éxitosamente");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            init();
-        }        
-    }     
    
-    public void onRowCancel(RowEditEvent event) {
-        FacesMessage msg = new FacesMessage("Edicion Cancelada", ((Usuario) event.getObject()).getNombre());
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
-    
-    public void changePass(Usuario usuario){
-        this.usuario=usuario;
-        if ("admin".equals(usuario.getNombreUsuario())){
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Información", "No se puede Editar contraseña del admin");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-        }else{
-            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
-            usuario.setPassword(usuarioDao.MD5(usuario.getPassword()));
-            usuarioDao.update(usuario);         
-            this.usuario= new Usuario() ;        
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Información", "Editado éxitosamente");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-            init();
-        }        
-    }
     
     public boolean validaRegistro(String str){
         UsuarioDaoImpl b = new UsuarioDaoImpl();

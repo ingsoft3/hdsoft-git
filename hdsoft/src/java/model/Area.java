@@ -1,5 +1,4 @@
 package model;
-// Generated 24/11/2015 08:20:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="area"
-    ,catalog="ppiv"
+    ,catalog="hdsoft_bd"
 )
 public class Area  implements java.io.Serializable {
 
