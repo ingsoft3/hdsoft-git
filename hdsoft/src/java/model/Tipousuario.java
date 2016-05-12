@@ -1,5 +1,5 @@
 package model;
-
+// Generated 11/05/2016 08:31:15 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -25,17 +25,20 @@ public class Tipousuario  implements java.io.Serializable {
 
      private Integer id;
      private String nombre;
+     private String url;
      private Set usuarios = new HashSet(0);
 
     public Tipousuario() {
     }
 
 	
-    public Tipousuario(String nombre) {
+    public Tipousuario(String nombre, String url) {
         this.nombre = nombre;
+        this.url = url;
     }
-    public Tipousuario(String nombre, Set usuarios) {
+    public Tipousuario(String nombre, String url, Set usuarios) {
        this.nombre = nombre;
+       this.url = url;
        this.usuarios = usuarios;
     }
    
@@ -61,6 +64,16 @@ public class Tipousuario  implements java.io.Serializable {
         this.nombre = nombre;
     }
 
+    
+    @Column(name="url", nullable=false, length=50)
+    public String getUrl() {
+        return this.url;
+    }
+    
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
 @OneToMany(fetch=FetchType.LAZY, mappedBy="tipousuario")
     public Set getUsuarios() {
         return this.usuarios;
@@ -70,10 +83,11 @@ public class Tipousuario  implements java.io.Serializable {
         this.usuarios = usuarios;
     }
 
- @Override
+@Override
     public String toString() {
         return nombre;
     }
+
 
 }
 

@@ -1,6 +1,7 @@
 
 package BeanSesion;
 
+import dao.TipousuarioDaoImpl;
 import dao.UsuarioDaoImpl;
 import java.util.List;
 import javax.faces.application.FacesMessage;
@@ -8,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import model.Tipousuario;
 
 import model.Usuario;
 import org.hibernate.Session;
@@ -18,6 +20,7 @@ import util.HibernateUtil;
 @SessionScoped
 public class MbSLogin {
     private Usuario usuario;
+    private Tipousuario tipousuario;
     private Session session;
     private Transaction transaccion;
     private String nombreUsuario;
@@ -33,7 +36,9 @@ public class MbSLogin {
         this.session=null;
         this.transaccion=null;
         try{
-            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl(); 
+            UsuarioDaoImpl usuarioDao = new UsuarioDaoImpl();
+            TipousuarioDaoImpl tiposuarioDao = new TipousuarioDaoImpl();
+            List <Tipousuario> Ltipou;
             List <Usuario> list; 
             list=usuarioDao.consultaQuery("From Usuario where nombre_usuario='"+this.nombreUsuario+"'");
             this.session=HibernateUtil.getSessionFactory().openSession();
@@ -41,47 +46,27 @@ public class MbSLogin {
             
             for (Usuario usr : list){                
                 usuario=usuarioDao.findById(usr.getId());               
+            }            
+            Ltipou = tiposuarioDao.consultaQuery("From Tipousuario where id="+usuario.getTipousuario().getId());
+            
+            for (Tipousuario tipo : Ltipou){
+                tipousuario=tiposuarioDao.findById(tipo.getId());
             }
             
             if(usuario!=null){   
-                if(usuario.getEstadoString().equals("ACTIVO")){
-                //if(usuario.getEstado()>0){//VALIDA SI EL USUARIO ESTÁ ACTIVO                     
+               // if(usuario.getEstadoString().equals("ACTIVO")){
+                if(usuario.getEstado()>0){//VALIDA SI EL USUARIO ESTÁ ACTIVO                     
                     if(usuario.getPassword().equals(usuarioDao.MD5(this.password))){
                         HttpSession httpSession=(HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-                        httpSession.setAttribute("nombreUsuario", this.nombreUsuario);
-                      
-                        if(usuario.getNombreUsuario().equals("admin")){   
-                            resultado="/layouts/global"; //ACCESO A USUARIO ADMIN
-                        }
-                        if(usuario.getTipousuario().getNombre().equals("ADMINISTRADOR")){   
-                            resultado="/layouts/global"; //ACCESO SOLO A USUARIOS TIPO ADMINISTRADOR
-                        }
-                        if(usuario.getTipousuario().getNombre().equals("USUARIO")){
-                            resultado="/layouts/UsuarioMenu";   //ACCESO SOLO A USUARIOS TIPO USUARIO
-                        }
-                        if(usuario.getTipousuario().getNombre().equals("TECNICO")){
-                            resultado="/layouts/TecnicoMenu";   //ACCESO SOLO A USUARIOS TIPO TECNICO                          
-                        }
-                        if(usuario.getTipousuario().getNombre().equals("AUDITOR")){
-                            resultado="/layouts/AuditorMenu";   //ACCESO SOLO A USUARIOS TIPO AUDITOR
-                        }
-                    }else{ 
-                        FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error acceso","Contraseña incorrecta") );
-                        resultado=null;
-                    }           
-                }else{
-                    FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error acceso","Usuario inactivo") );
-                    resultado=null;
-                }                     
-            }else{
-                FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_FATAL,"Error acceso","Usuario no existe") );
-                resultado=null;
-            }
-            
+                        httpSession.setAttribute("nombreUsuario", this.nombreUsuario);                       
+                        resultado = tipousuario.getUrl();
+                    }
+                }
+            }               
             this.transaccion.commit();
-            this.nombreUsuario=null;   
-            
+            this.nombreUsuario=null;             
             return resultado;
+            
         }catch(Exception ex){
             if(this.transaccion!=null){
                 this.transaccion.rollback();

@@ -2,11 +2,11 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="hdsoft_bd"/>
-  <table-filter match-name="area"/>
-  <table-filter match-name="actividad"/>
-  <table-filter match-name="tipousuario"/>
   <table-filter match-name="usuario"/>
   <table-filter match-name="activos"/>
+  <table-filter match-name="tipousuario"/>
   <table-filter match-name="tipoactivo"/>
   <table-filter match-name="incidencia"/>
+  <table-filter match-name="actividad"/>
+  <table-filter match-name="area"/>
 </hibernate-reverse-engineering>

@@ -1,4 +1,5 @@
 package model;
+// Generated 11/05/2016 08:31:15 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -69,12 +70,12 @@ public class Area  implements java.io.Serializable {
         this.usuarios = usuarios;
     }
 
-    @Override
+ 
+
+@Override
     public String toString() {
         return nombre;
     }
-
-
 
 
 }

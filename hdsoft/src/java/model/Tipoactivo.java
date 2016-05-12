@@ -1,5 +1,5 @@
 package model;
-
+// Generated 11/05/2016 08:31:15 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -70,7 +70,7 @@ public class Tipoactivo  implements java.io.Serializable {
         this.activoses = activoses;
     }
 
- @Override
+@Override
     public String toString() {
         return nombre;
     }
