@@ -162,4 +162,6 @@ public class usuarioBean implements Serializable{
         requestContext.update("form:display");
         requestContext.execute("PF('dlg').show()");
     }
+    
+    //HOLA MUNDO
 }
