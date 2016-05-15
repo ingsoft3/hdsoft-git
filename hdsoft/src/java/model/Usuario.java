@@ -170,6 +170,14 @@ public class Usuario  implements java.io.Serializable {
         return this.estado;
     }
     
+     @Column(name="estadoString", nullable=false)
+    public String getEstadoString() {
+        if (this.estado == 1) {
+            return "ACTIVO";
+        }
+        return "INACTIVO";
+    }
+    
     public void setEstado(int estado) {
         this.estado = estado;
     }
