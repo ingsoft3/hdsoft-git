@@ -163,5 +163,5 @@ public class usuarioBean implements Serializable{
         requestContext.execute("PF('dlg').show()");
     }
     
-    //HOLA MUNDO
+    
 }

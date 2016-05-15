@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+       <ui:composition template="./../layouts/global.xhtml">
+
+            <ui:define name="content">
+                <h1>Crear Area</h1>
+                <h:form id="formcrear">
+                    <h:panelGrid columns="3">
+                        
+                        <p:growl id="growl" showDetail="true" />
+                        
+                        <p:outputLabel for="idNombre" value="Nombre" />
+                        <p:inputText id="idNombre" label="Nombre" required="true" value="#{areaBean.area.nombre}" />
+                        <p:message for="idNombre" /> 
+                                                                     
+                        <p:commandButton id="btnEnviar" value="Enviar Datos" actionListener="#{areaBean.crear()}" update="growl formcrear">
+
+                        </p:commandButton>
+                       <p:message for="btnEnviar"/>
+
+                    </h:panelGrid>
+                </h:form>  
+            </ui:define>
+
+            <!--<ui:define name="bottom">
+                
+            </ui:define>-->
+
+        </ui:composition>
+
+    </body>
+</html>

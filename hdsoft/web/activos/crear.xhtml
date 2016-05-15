@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <h:body>
+        
+        
+        
+
+        <ui:composition template="./../layouts/global.xhtml">
+
+            <ui:define name="content">
+                <h2>Crear Activos</h2>
+                <hr />
+                <h:form id="formcrear">
+                    <h:panelGrid columns="3">
+                        
+                        <p:growl id="growl" showDetail="true" />
+                        
+                        <p:outputLabel for="idNombre" value="Nombre XXX" />
+                        <p:inputText id="idNombre" label="Nombre" required="true" value="#{activosBean.activos.nombre}" />
+                        <p:message for="idNombre" />
+                                        
+                        <p:outputLabel for="idTipoactivo" value="Tipoactivo" />
+                        <p:selectOneMenu id="idTipoactivo" value="#{activosBean.selTipoactivo}">
+                            <p:ajax event="change" partialSubmit="true"/>
+                            <f:selectItem itemLabel="Seleccione uno" itemValue=" " />
+                            <f:selectItems value="#{activosBean.LTipoactivo}"  var="posicionIt" itemLabel="#{posicionIt}" itemValue="#{posicionIt.id}" />
+                        </p:selectOneMenu>
+                        <p:message for="idTipoactivo"/>
+                        
+                        <p:outputLabel for="idSerial" value="Serial" />
+                        <p:inputText id="idSerial" label="Serial" required="true" value="#{activosBean.activos.serial}" />
+                        <p:message for="idSerial" />
+                        
+                        <p:outputLabel for="idUsuario" value="Usuario" />
+                        <p:selectOneMenu id="idUsuario" value="#{activosBean.selUsuario}">
+                            <p:ajax event="change" partialSubmit="true"/>
+                            <f:selectItem itemLabel="Seleccione uno" itemValue=" " />
+                            <f:selectItems value="#{activosBean.LUsuario}"  var="posicionIt" itemLabel="#{posicionIt}" itemValue="#{posicionIt.id}" />
+                        </p:selectOneMenu>
+                        <p:message for="idUsuario"/>
+                        
+                        <p:outputLabel for="idModelo" value="Modelo" />
+                        <p:inputText id="idModelo" label="Modelo" required="true" value="#{activosBean.activos.modelo}" />
+                        <p:message for="idModelo" />
+                        
+                        <p:outputLabel for="idFabricante" value="Fabricante" />
+                        <p:inputText id="idFabricante" label="Fabricante" required="true" value="#{activosBean.activos.fabricante}" />
+                        <p:message for="idFabricante" />
+                        
+                        <p:outputLabel for="idSistemaoperativo" value="Sistemaoperativo" />
+                        <p:inputText id="idSistemaoperativo" label="Sitemaoperativo" required="true" value="#{activosBean.activos.sistemaoperativo}" />
+                        <p:message for="idSistemaoperativo" />
+                        
+                        <p:outputLabel for="idDescripcion" value="Descripcion" />
+                        <p:inputText id="idDescripcion" label="Descripcion" required="true" value="#{activosBean.activos.descripcion}" />
+                        <p:message for="idDescripcion" />
+
+                        <p:commandButton id="btnEnviar" value="Crear" actionListener="#{activosBean.crear}" 
+                                         oncomplete="retorno(xhr,status,args);" update="growl formcrear">
+                        </p:commandButton>
+                        <p:message for="btnEnviar"/>
+                        
+                        <script type="text/javascript">
+                            function retorno(a1,a2,a3){                                
+                                document.location="../generar.jsp?id="+a3.id;                                
+                            }
+                        </script>
+
+
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
