@@ -17,13 +17,14 @@ import org.primefaces.event.RowEditEvent;
 
 /**
  *
- * @author 
+ * @author Felipe
  */
 @ManagedBean
 @ViewScoped
 public class areaBean {
     private Area area;
     private List <Area> LArea;
+    private List <Area> LFArea;
 
     /**
      * Creates a new instance of areaBean
@@ -35,8 +36,19 @@ public class areaBean {
     @PostConstruct
     public void init(){
         AreaDaoImpl areaDao = new AreaDaoImpl(); 
-        LArea = areaDao.findAll();        
+        LArea = areaDao.findAll();
+        LFArea = areaDao.findAll();
     }
+
+    public List<Area> getLFArea() {
+        return LFArea;
+    }
+
+    public void setLFArea(List<Area> LFArea) {
+        this.LFArea = LFArea;
+    }
+    
+    
 
     public Area getArea() {
         return area;

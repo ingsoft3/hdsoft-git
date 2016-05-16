@@ -1,5 +1,5 @@
 package model;
-// Generated 11/05/2016 08:31:15 PM by Hibernate Tools 4.3.1
+// Generated 24/11/2015 08:20:00 PM by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -161,9 +161,9 @@ public class Activos  implements java.io.Serializable {
         this.incidencias = incidencias;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return nombre;
+    }
 }
-
 

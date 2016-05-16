@@ -54,7 +54,7 @@ AND a.id=$P{id}]]>
 		<band height="103" splitType="Stretch">
 			<image>
 				<reportElement x="141" y="0" width="437" height="103"/>
-				<imageExpression><![CDATA["D:\\Felipe\\Documents\\NetBeansProjects\\ppiv\\src\\java\\imagenes\\helpdesk.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["D:\\hdsoft-git\\hdsoft-git\\hdsoft\\src\\java\\imagenes\\helpdesk.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

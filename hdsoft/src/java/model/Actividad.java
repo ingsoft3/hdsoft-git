@@ -1,5 +1,5 @@
 package model;
-// Generated 11/05/2016 08:31:15 PM by Hibernate Tools 4.3.1
+// Generated 9/12/2015 08:53:02 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -134,6 +134,11 @@ public class Actividad  implements java.io.Serializable {
     
     public void setRespuesta(String respuesta) {
         this.respuesta = respuesta;
+    }
+
+    @Override
+    public String toString() {
+        return descripcion;
     }
 
 

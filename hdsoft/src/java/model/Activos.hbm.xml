@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 11/05/2016 08:31:17 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated 24/11/2015 08:20:01 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.Activos" table="activos" catalog="hdsoft_bd" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="tipoactivo" class="model.Tipoactivo" fetch="select">
+        <many-to-one name="tipoactivo" class="model.Tipoactivo" fetch="join">
             <column name="tipo" not-null="true" />
         </many-to-one>
-        <many-to-one name="usuario" class="model.Usuario" fetch="select">
+        <many-to-one name="usuario" class="model.Usuario" fetch="join">
             <column name="usuario" not-null="true" />
         </many-to-one>
         <property name="nombre" type="string">
