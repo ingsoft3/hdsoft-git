@@ -183,9 +183,9 @@ public class activosBean {
     }
 
     public static void GenerarReportePdf(String var1,String var2) throws JRException, net.sf.jasperreports.engine.JRException, SQLException, IOException {
-        Connection cnt = DriverManager.getConnection("jdbc:mysql://localhost:3306/ppiv?user=root");//CONEXION BD
+        Connection cnt = DriverManager.getConnection("jdbc:mysql://localhost:3306/hdsoft_bd?user=root");//CONEXION BD
         
-        String report="D://Felipe/Documents/NetBeansProjects/ppiv/src/java/reportes/"+var2+".jrxml";
+        String report="D://hdsoft-git/hdsoft-git/hdsoft/src/java/reportes/"+var2+".jrxml";
         
         Map parametros = new HashMap();
         parametros.put("id",var1);//PARAMETROS        
@@ -194,7 +194,7 @@ public class activosBean {
         JasperReport reporte = JasperCompileManager.compileReport(report);
         
         JasperPrint printer = JasperFillManager.fillReport(reporte, parametros, cnt);
-        JasperExportManager.exportReportToPdfFile(printer, "D://Felipe/Documents/NetBeansProjects/ppiv/src/java/activosPDF/ACT"+var1+".pdf");
+        JasperExportManager.exportReportToPdfFile(printer, "D://hdsoft-git/hdsoft-git/hdsoft/src/java/activosPDF/ACT"+var1+".pdf");
        
         cnt.close();
        
