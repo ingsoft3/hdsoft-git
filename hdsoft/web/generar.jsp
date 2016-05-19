@@ -5,7 +5,7 @@ trimDirectiveWhitespaces="true"
 <%
 	String pdf=request.getParameter("id");
 	try {
-		File path = new File ("D:/hdsoft-git/hdsoft-git/hdsoft/src/java/activosPDFD/"+pdf);
+		File path = new File ("D://hdsoft-git/hdsoft-git/hdsoft/src/java/activosPDFD/"+pdf);
 		InputStream input = new FileInputStream(path);
 		
 		byte[] data = new byte[0];

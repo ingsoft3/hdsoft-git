@@ -7,18 +7,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <h:body>
-        
-        
-        
-
         <ui:composition template="./../layouts/global.xhtml">
-
             <ui:define name="content">
                 <h2>Crear Activos</h2>
                 <hr />
                 <h:form id="formcrear">
-                    <h:panelGrid columns="3">
-                        
+                    <h:panelGrid columns="3">                        
                         <p:growl id="growl" showDetail="true" />
                         
                         <p:outputLabel for="idNombre" value="Nombre" />
@@ -71,8 +65,7 @@
                                 document.location="../generar.jsp?id="+a3.id;                                
                             }
                         </script>
-
-
+                        
                     </h:panelGrid>
                 </h:form>
             </ui:define>
